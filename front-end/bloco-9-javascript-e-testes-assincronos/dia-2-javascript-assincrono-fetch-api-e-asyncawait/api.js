@@ -1,4 +1,4 @@
-// const fetch = require('node-fetch');
+const fetch = require('node-fetch');
 
 // const fetchCoins = async () => {
 //   const url = 'https://api.coincap.io/v2/assets';
@@ -23,7 +23,10 @@
 //     list.appendChild(li);
 //   });
 // }
-// window.onload = () => Coin();
+// window.onload = () => Coins();
+
+// api.js
+if (window !== undefined) {}
 
 const fetchCoins = async () => {
   const url = 'https://api.coincap.io/v2/assets';
@@ -39,10 +42,10 @@ const fetchCoins = async () => {
 const setCoins = async () => {
   const coins = await fetchCoins();
 
-  const coinsList = document.getElementById('list');
+  const coinsList = document.getElementById('coins-list');
 
   coins
-    .filter((coin) => Number(coin.rank) <= 10)
+    .filter((_, index) => index < 10)
     .forEach((coin) => {
       const newLi = document.createElement('li');
 
@@ -51,5 +54,6 @@ const setCoins = async () => {
       coinsList.appendChild(newLi);
     });
 }
+
 
 window.onload = () => setCoins();
