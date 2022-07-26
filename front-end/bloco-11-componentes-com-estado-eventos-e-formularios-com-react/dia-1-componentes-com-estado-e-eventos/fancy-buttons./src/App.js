@@ -1,30 +1,22 @@
-
-import './App.css';
 import React from 'react';
+import './App.css';
 
-function clique () {
-  console.log('funcionou?');
-};
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    // Essa chamada ao `this` retorna `undefined`? !
+    console.log(this)
+    console.log('Clicou')
+  }
 
-function clique2 () {
-  console.log('funcionou2?');
-}
-
-function clique3 () {
-  console.log('funcionou3?');
-}
-
-class Botton extends React.Component {
   render() {
-    return (
-      <div>
-        <button onClick={ clique }>botao </button>
-        <button onClick={ clique2 }>botao 2</button>
-        <button onClick={ clique3 }>botao 3</button>
-      </div>
-    );
+    // Já essa chamada ao `this`, feita de dentro da função `render`, retorna o objeto que esperamos
+    console.log(this)
+    return <button onClick={this.handleClick}>Meu botão</button>
   }
 }
 
-
-export default Botton;
+export default App;
