@@ -13,21 +13,49 @@ class App extends React.Component {
   };
 }
 
-  handleChange(event) {
-    this.setState({ nome: event.target.value });
-  }
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
   
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Hello World</h1>
          <form>
+          <fieldset>
           <label>Nome:</label>
             <input type="text" name="nome" value={this.state.nome} onChange={this.handleChange} />
-           <button type="submit">Enviar</button>
+            <label>email</label>
+            <input 
+            type="text" 
+            name="email"
+            value={this.state.email}
+            onChange={this.handleChange} />
+          </fieldset>
           <div>
            <label>mensagem</label>
-           <textarea name="mensagem" rows="4" cols="50"></textarea>
+           <textarea 
+            name="mensagem" 
+            rows="4" 
+            cols="50" 
+            value={this.state.mensagem}
+            onChange={this.handleChange} />
+
+            <input 
+            type="checkbox" 
+            name="newsletter" 
+            value={this.state.newsletter} 
+            onChange={this.handleChange} />
+
+            <input 
+            type="file" 
+            name="arquivo" />
+            
           </div>  
         </form>
       </div>
