@@ -1,58 +1,37 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import ProfessionalForm from './ProfessionalForm';
+import PersonaForm from './PersonaForm';
 
 class Form extends React.Component {
-  render () {
 
-    const { documentId } = this.props;
+    render() {
+      const { changeHandler, onBlurHandler, currentState, sendForm, clearForm } = this.props;
 
-    return (
-      <form> 
-        <fieldset>
-          Name:
+      return (
+        <form>
+          <PersonaForm
+            changeHandler={changeHandler}
+            onBlurHandler={onBlurHandler}
+            currentState={currentState}
+          />
+          <ProfessionalForm
+            changeHandler={changeHandler}
+          />
           <input 
-            type="text" 
-            name="name" 
-            placeholder="Name"
-            maxLength={40}
-            size='40' 
+            type="button" 
+            onClick={ sendForm }
+            value="Enviar"
           />
-
-          email:
-          <input htmlFor="email"
-            type="email"
-            name="email"
-            placeholder="Email"
-            maxLength={50}
-            size='40'
+          <input
+            type="button"
+            onClick={ clearForm }
+            value="Limpar"
           />
-
-        <input 
-          type="text"
-          maxLength='14'
-          name='documentId'
-          placeholder='CPF'
-          value={documentId}
-        />
-
-        <input
-          type="text"
-          placeholder='endereço'
-          maxLength={200}
-          size='40'
-          />
-        </fieldset>
-      </form>
-    )
-  }
-}
-
-Form.propTypes = {
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  documentId: PropTypes.string.isRequired,
-  endereco: PropTypes.string.isRequired,
+        </form>
+      );
+    }
 
 }
 
 export default Form;
+ 
