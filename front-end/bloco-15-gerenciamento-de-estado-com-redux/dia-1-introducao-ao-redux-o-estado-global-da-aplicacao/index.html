@@ -62,11 +62,11 @@
       const store = Redux.createStore(combinedReducer);
 
       themeButton.addEventListener('click', () => {
-        // coloque o código aqui.
+        store.dispatch({type: CHANGE_THEME});
       });
 
       statusButton.addEventListener('click', () => {
-        // coloque o código aqui.
+        store.dispatch({type: CHANGE_STATUS});
       });
     </script>
   </body>
