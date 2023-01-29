@@ -20,3 +20,9 @@ SELECT FLOOR(39.494);
 
 #Temos uma taxa de inscrição de 85.234% no curso de fotografia para iniciantes. Qual é o valor aproximado para cima dessa média?
 SELECT CEIL(85.234) AS valor_aproximado
+
+#Monte uma query que exiba a diferença de dias entre '2030-01-20' e hoje.
+SELECT DATEDIFF('2030-01-20', '2023-01-29');
+
+#Monte uma query exiba a diferença de horas entre '10:25:45' e '11:00:00'.
+SELECT TIMEDIFF('11:00:00', '10:25:45');
