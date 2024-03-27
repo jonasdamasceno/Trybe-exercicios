@@ -5,19 +5,11 @@
 # final, a palavra deve ser mostrada na tela, informando se
 # a pessoa ganhou ou perdeu o jogo
 import random
-
-WORDS = [
-    "cat",
-    "elephant",
-    "dog",
-    "monkey",
-    "duck",
-    "chameleon",
-    "bear",
-    "moose",
-    "rooster",
-]
 MAX_ATTEMPTS = 3
+
+
+def retrieve_word(file):
+    return [word.strip() for word in file]
 
 
 def draw_secret_word(words):
@@ -42,7 +34,9 @@ def check_game_result(secret_word, guesses):
 
 
 if __name__ == "__main__":
-    secret_word, scrambled_word = draw_secret_word(WORDS)
+    with open("palavras.txt") as file:
+        words = retrieve_word(file)
+    secret_word, scrambled_word = draw_secret_word(words)
     print(f"Scrambled word is {scrambled_word}")
     guesses = collect_guesses()
     check_game_result(secret_word, guesses)
